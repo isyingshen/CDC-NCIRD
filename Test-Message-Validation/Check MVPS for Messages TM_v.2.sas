@@ -18,10 +18,6 @@
  /* Modified by:Ying Shen                                            */
  /* Changes:  Added obr22 in the output                              */
  /* Date Modified: 5/2/2023                                          */
- /* Modified by:Katherine Luce                                       */
- /* Changes: Added the port number to the connection source changing */
- /* it from "data source=MVPSdata\QSRV1" to                          */
- /* "data source=MVPSdata,1201\QSRV1*/                               */
  /********************************************************************/
 
 
