@@ -1,31 +1,5 @@
 /*****************************************************************************************************************/
-/* Description: Summarizes 11065 records in NNAD Stage4 Production and CSP NETSS.                 					  */
-/*                                                                                               				 	  */
-/* Created by : Hannah Fast      3/10/2020                                                        				 	  */
-/* Modified by:                                                                                   				 	  */
-/* Matt Lerick	3/13/2020 -%Include formats pathway renamed                                        				 	  */
-/* Matt Lerick	3/13/2020 -Upcase SITE for merge between CSP and NNAD                              				 	  */
-/* Matt Lerick	3/17/2020 -Redirected output to SAS code sets folder                               				 	  */
-/* Matt Lerick	3/19/2020 -Removed constraint for NNAD records to have mmwr_year>2018              				 	  */
-/* Hannah Fast  3/31/2020 -Made v4                                                               				  	  */
-/* Hannah Fast  4/7/2020  -Added duplicate sort by n_CDCDATE                                      				 	  */
-/* Hannah Fast  4/13/2020 -Added duplicate report output                                          				 	  */
-/* Hannah Fast  5/1/2020  -Restructured, added second dup_flag                                    				 	  */
-/* Hannah Fast  5/13/2020 -Restructured, modified duplicates tab                                  				 	  */
-/* Hannah Fast  5/18/2020 -Changed NETSS dedup key to 4 variables                                 				 	  */
-/* Hannah Fast  6/11/2020 -Added timer                                                            				 	  */
-/* Hannah Fast  6/15/2020 -Optimized to improve time and limit memory                             				 	  */
-/* Hannah Fast  7/6/2020  -Added limit on printing of duplicate report                            				 	  */
-/* Sang Kang    7/27/2020 -Changed the output file path to Informatics environment folder.        				 	  */
-/* Anu Bhatta	8/05/2020 -As QC folder changed path for Projdir modified					     		  				 	  */
-/* Hannah Fast  8/12/2020 -Added 5 changes from email                                             				 	  */
-/* Anu Bhatta	8/21/2020 -Implemented changes to Listing 3b, Table 5a, 5b, 6b,6c,6d	    	 		  				 	  */
-/* Hannah Fast	9/09/2020 -Changes to table 6a (report and dataset) and added MVPS prod libname    				 	  */
-/* Anu Bhatta	10/05/2020 -Added column for difference between previous NNAD and CSP Netss	to	  				 	  */
-/*						    		table 5a and storing dataset to bring in 14 days prior into a column 		  		 	  */
-/* Anu Bhatta	11/02/2020 -Standardized the code and added ExlFmt macro for QCNNADFormats		 		 			 	  */
-/* Anu Bhatta	11/06/2020 -Added new tab for Table 7 for Alaska Duplicates						 						 	  */
-/* Hannah Fast	04/13/2021 -Adjusted for NNDSS Redesign								             						 	  */
+/* Description: Summarizes 11065 records in NNAD Stage4 Production and CSP NETSS.                 					  */							             						 	  */
 /* Ying Shen	05/19/2021 -Removed the 2nd labname NNADs 								         			  			 	  */
 /* Ying Shen	05/20/2021 -Used the secondary staging NNAD								         						 	  */
 /* Ying Shen	05/20/2021 -Change var.sum to sum(var)                                           				 	  */
