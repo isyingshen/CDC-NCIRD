@@ -1,24 +1,5 @@
 /**********************************************************************************************************/
 /* Description: Summarizes 11065 records in NNAD Stage4 Production and CSP NETSS.                         */
-/*                                                                                                        */
-/* Created by : Xin Yue 03/17/2020, based on Hannah Fast      3/10/2020                                   */
-/* V6: Modified by: Xin Yue 04/21/2020, Went through GenV2 MMG with Sandy/Matt and added/deleted variables*/
-/* Modified by : Anu Bhatta 08/03/2020  added Tagsort to Proc Sort and combined all Proc Freq into one	 */ 
-/*													 where condition not applied													 */
-/* 				  Anu Bhatta 08/05/2020  As QC folder changed path for Projdir modified	                   */
-/* Modified by:  Pam Srivastava 9/3/20                                                                    */
-/*					  Anu Bhatta 09/17/2020 Changed n_datet which is character value assigned to					 */
-/*													$datet format which is also changed to character					 	 */
-/*					  Anu Bhatta 09/22/2020 To avoid confusion for dx_dt format and variable, 						 */
-/*												   $dx_dt is changed to $datet (according to Pam email dt:09/22/20)	 */
-/*													Proc format in the code are added into QCNNADFormats.xlsx Formats	 */
-/*					  Anu Bhatta 12/09/2020 Standardized the code and added ExlFmt macro for QCNNADFormats		 */
-/*					 Ying Shen 2/16/2021 Commented out KS in Ln 898 and UT in LN914									 */
-/*					 Anu Bhatta 06/01/2021 Commented out IDaho(ID) in Ln 896												 */
-/*					 Anu Bhatta 07/09/2021 Added Sasconnect to run each jurisdiction in parallel.					 */
-/*												  used same Covid19_Feedback_header.sas for this code also created	 */
-/*												  Macros - gen_jur and net_jur													 */
-/*					 Anu Bhatta 07/26/2022 Changed race_net to  nrace_net for numeric format						 */
 /**********************************************************************************************************/
 /*** SAS grid connect setup section                                        ***/
 %put SAS HOST %sysfunc(grdsvc_getname('')); /* name of the host handling the job */
@@ -174,7 +155,7 @@ data AllUS;
             sex_1='3';
          else /*if compress(sex) in ("", ".") then*/ 
             sex_1='4'; /*Value "X" and "." are inlcuded in missing*/
-   label sex_1 = "Sex (Subject’s Sex (PID-8) in GenV2; SEX in NETSS) (sex)";
+   label sex_1 = "Sex (SubjectÂ’s Sex (PID-8) in GenV2; SEX in NETSS) (sex)";
 
    /*Race for All US*/
    if (ak_n_ai='Y') then 
@@ -371,7 +352,7 @@ data AllUS;
    else 
    if (compress(pregnant) in (" ", ".")) then 
       preg=4;
-   label preg="Pregnant Among Females (Pregnancy Status (77996-7) if Subject’s Sex (PID-8) = Female (F); GenV2 only) (pregnant)";
+   label preg="Pregnant Among Females (Pregnancy Status (77996-7) if SubjectÂ’s Sex (PID-8) = Female (F); GenV2 only) (pregnant)";
 
 
    if (n_datet='') then 
@@ -489,7 +470,7 @@ data AllUS;
          expcountry=1;
    else 
          expcountry=2;
-   label expcountry="Exposure Country (Country of Exposure (77984-3); GenV2 only) (expcountry1 – expcountry5) ";
+   label expcountry="Exposure Country (Country of Exposure (77984-3); GenV2 only) (expcountry1 Â– expcountry5) ";
 
    if (compress(expstateprov1) not in ("", ".") or compress(expstateprov2) not in ("", ".") or 
        compress(expstateprov3) not in ("", ".") or compress(expstateprov4) not in ("",".") or 
@@ -497,7 +478,7 @@ data AllUS;
          expstateprov=1;
    else 
          expstateprov=2;
-   label expstateprov="Exposure State/Province (State or Province of Exposure (77985-0); GenV2 only) (expstateprov1 – expstateprov5)";
+   label expstateprov="Exposure State/Province (State or Province of Exposure (77985-0); GenV2 only) (expstateprov1 Â– expstateprov5)";
 
    if (compress(expcounty1) not in ("", ".") or compress(expcounty2) not in ("", ".") or 
        compress(expcounty3) not in ("", ".") or compress(expcounty4) not in ("", ".") or
@@ -640,7 +621,7 @@ data GenV2;
    label dob="Date of Birth (Birth Date (PID-7)) (birth_dt)";
    label age="Age at Case Investigation (Age at Case Investigation (77998-3)) (age_invest)";
    label agetype="Age Units (Age Units at Case Investigation (OBX-6 for 77998-3)) (age_invest_units)";
-   label sex_1="Sex (Subject’s Sex (PID-8)) (sex)";
+   label sex_1="Sex (SubjectÂ’s Sex (PID-8)) (sex)";
    label race_gen="Race (Race Category (PID-10))";
    label ethnicity="Ethnicity (Ethnic Group (PID-22)) (ethnicity)";
    label res_country="Country of Usual Residence (Country of Usual Residence (77983-5)) (res_country)";
@@ -664,8 +645,8 @@ data GenV2;
    label importstate="Import State (Imported State (INV154)) (import_state)";
    label importcounty="Import County (Imported County (INV156)) (import_county)";
    label importcity="Import City (Imported City (INV155)) (import_city)";
-   label expcountry="Exposure Country (Country of Exposure (77984-3)) (expcountry1 – expcountry5)";
-   label expstateprov="Exposure State/Province (State or Province of Exposure (77985-0)) (expstateprov1 – expstateprov5)";
+   label expcountry="Exposure Country (Country of Exposure (77984-3)) (expcountry1 Â– expcountry5)";
+   label expstateprov="Exposure State/Province (State or Province of Exposure (77985-0)) (expstateprov1 Â– expstateprov5)";
    label expcounty="Exposure County (County of Exposure (77987-6)) (expcounty1 - expcounty5)";
    label expcity="Exposure City (City of Exposure (77986-8)) (expcity1 - expcity5)";
    label dis_aq="Where the disease was likely acquired (Case Disease Imported Code (77982-7)) (disease_acquired)";
@@ -678,7 +659,7 @@ data GenV2;
    label state_dt="Earliest Date Reported to State (Earliest Date Reported to State (77973-6))(first_report_state_dt)";
    label phd_rpt="Date First Reported to PHD (Date First Reported to PHD (77970-2)) (first_report_PHD_dt)";
    label source="Type of Facility/Provider Reporting (Reporting Source Type Code (48766-0)) (reporting_source)";
-   label preg="Pregnant Among Females (Pregnancy Status (77996-7) if Subject’s Sex (PID-8) = Female (F)) (pregnant)";
+   label preg="Pregnant Among Females (Pregnancy Status (77996-7) if SubjectÂ’s Sex (PID-8) = Female (F)) (pregnant)";
 
 run; 
 
@@ -707,7 +688,7 @@ data NETSS;
    label nrace_net="Race (RACE) (n_race)";
    label ethnicity="Ethnicity (ETHNICITY) (ethnicity)";
    label n_datet="Type of Date for earliest date asociated with this incidence (DATETYPE and EVENTDATE) (n_datet)";
-   /*label onset_netss="Onset Date (EVENTDATE if“DATETYPE = 1) (illness_onset_dt)";*/
+   /*label onset_netss="Onset Date (EVENTDATE ifÂ“DATETYPE = 1) (illness_onset_dt)";*/
 
    label dis_aq="Where the disease was likely acquired (IMPORTED) (disease_acquired)";
    label outbreak="Outbreak Associated (OUTBREAK) (outbreak_assoc)";
@@ -794,7 +775,7 @@ ods _all_ close;
 ods listing;
 
 ods noproctitle;
-ods word file="&output.\GenV2 Jurisdictions – NNDSS COVID-19 Case Notification Feedback Report as of &SYSDATE9..docx" startpage=no;
+ods word file="&output.\GenV2 Jurisdictions Â– NNDSS COVID-19 Case Notification Feedback Report as of &SYSDATE9..docx" startpage=no;
 
 proc freq data=GenV2(keep = case_status mmwryear mmwrweek rpt_state report_county_Gen birthctr dob
 									 age agetype sex_1 race_gen ethnicity res_country res_state res_county
@@ -807,7 +788,7 @@ proc freq data=GenV2(keep = case_status mmwryear mmwrweek rpt_state report_count
           die importctr importstate importcounty importcity expcountry expstateprov expcounty expcity dis_aq 
           trans outbreak invest_dt phd_dt phd_rpt source comments/nocol missing;
            
-   title1 "GenV2 Jurisdictions – NNDSS COVID-19 Case Notification Feedback Report";
+   title1 "GenV2 Jurisdictions Â– NNDSS COVID-19 Case Notification Feedback Report";
    title2 "Confirmed and Probable Cases as of &weekdate.";
 run;
 
