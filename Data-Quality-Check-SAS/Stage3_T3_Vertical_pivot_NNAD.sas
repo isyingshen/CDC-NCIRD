@@ -3,8 +3,6 @@
  /* VERSION: 1.0                                                     */
  /* CREATED: 2020/12/22                                              */
  /*                                                                  */
- /* BY:  Sang Kang                                                   */
- /*                                                                  */
  /* PURPOSE:  This is a code snippet that takes LabEpi data in       */
  /*           vertical form into horizontal                          */
  /*                                                                  */ 
